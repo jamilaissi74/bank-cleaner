@@ -37,3 +37,15 @@ on FOOD : 1000dh
 on GROCERIES : 500dh
 on TRANSPORTATION :1000dh
 on SUBSCRIPTIONS : 200dh 
+
+## questions for M2
+How do you read a CSV file in Python?
+How do you change the separator for banque_b.csv?
+How do you loop over every file in a folder? <----------- what ?
+
+
+when i run df.head() it gives me the first 5 rows
+df.shap gives me how many rows and columns 
+df.columns gives me the columns name and their type 
+
+i choose pandas because it's easy and straight to the point 
