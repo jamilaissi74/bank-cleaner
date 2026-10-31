@@ -6,6 +6,7 @@ first we have 4 collumns : date , name of what we bought , the amount , and the 
     <li>in c the currency is mixed between euro and mad</li> 
     <li>even the name of the columns are not unified </li>
     <li>there are different versions of the same purchase </li>
+    file b is considered to have one columns
 </ul>
 
 
