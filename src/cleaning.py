@@ -26,7 +26,15 @@ def date_normalizing(date):
      return pd.to_datetime(date, errors='raise').date()
       
 def currency_normalizing(currency):
-    if currency == "EURO":
-        return "MAD"
-    else: 
-        return 0
+    if pd.isnull(currency) or str(currency).strip() == "":
+            raise ValueError("currency is empty")
+
+    currency= re.sub("EURO|EUR", "EUR", str(currency).strip(), flags=re.IGNORECASE)
+    if currency == "EUR":
+         return "EUR"
+    currency= re.sub("mad|DH|DIRHAM", "MAD", str(currency).strip(), flags=re.IGNORECASE)
+
+    if currency == "MAD":
+         return "MAD"
+    else:
+        raise ValueError("currency is not known or not supported")

@@ -29,38 +29,41 @@ text= "CARREFOUR MARKET"
 #     #b = cleaning.label_normalizing(labels_a[i])
 #     #print("output :", b, "\n")
 
-df = pd.read_csv('./releves/banque_b.csv', decimal=',', delimiter=';')
+# df = pd.read_csv('./releves/banque_b.csv', decimal=',', delimiter=';')
 
 
 
 
-# for x in df['Date operation']:
-#     print("original :", x)
-#     b = cleaning.date_normalizing(x)
-#     print("output :", b, "\n")
+# # for x in df['Date operation']:
+# #     print("original :", x)
+# #     b = cleaning.date_normalizing(x)
+# #     print("output :", b, "\n")
 
-tests = [
-    ("03/04/2026", date(2026, 4, 3)),    # 3 April, not 4 March
-    ("10/06/2026", date(2026, 6, 10)),   # 10 June, not 6 October
-    ("01/02/2026", date(2026, 2, 1)),    # 1 February
-    ("13/04/2026", date(2026, 4, 13)),
-    ("2026-04-03", date(2026, 4, 3)),    # ISO, same date as the first
-    ("2026-06-10", date(2026, 6, 10)),
-    ("  2026-04-03  ", date(2026, 4, 3)),  # spaces around
-    ("2026-02-30", None),                # day out of range
-    ("31/04/2026", None),                # April has 30 days
-    ("2026-13-01", None),                # month 13
-    ("abc", None),
-    ("", None),
-    ("   ", None),
-    (None, None),
-]
+# tests = [
+#     ("03/04/2026", date(2026, 4, 3)),    # 3 April, not 4 March
+#     ("10/06/2026", date(2026, 6, 10)),   # 10 June, not 6 October
+#     ("01/02/2026", date(2026, 2, 1)),    # 1 February
+#     ("13/04/2026", date(2026, 4, 13)),
+#     ("2026-04-03", date(2026, 4, 3)),    # ISO, same date as the first
+#     ("2026-06-10", date(2026, 6, 10)),
+#     ("  2026-04-03  ", date(2026, 4, 3)),  # spaces around
+#     ("2026-02-30", None),                # day out of range
+#     ("31/04/2026", None),                # April has 30 days
+#     ("2026-13-01", None),                # month 13
+#     ("abc", None),
+#     ("", None),
+#     ("   ", None),
+#     (None, None),
+# ]
 
-for value, expected in tests:
-    try:
-        result = cleaning.date_normalizing(value)
-        status = "OK" if result == expected else "WRONG"
-        print(status, repr(value), "->", result, "(expected", expected, ")")
-    except ValueError as e:
-        status = "OK" if expected is None else "WRONG"
-        print(status, repr(value), "-> REJECTED:", e)
+# for value, expected in tests:
+#     try:
+#         result = cleaning.date_normalizing(value)
+#         status = "OK" if result == expected else "WRONG"
+#         print(status, repr(value), "->", result, "(expected", expected, ")")
+#     except ValueError as e:
+#         status = "OK" if expected is None else "WRONG"
+#         print(status, repr(value), "-> REJECTED:", e)
+
+print(cleaning.currency_normalizing("EUR"))
+print(cleaning.currency_normalizing("MAD"))
