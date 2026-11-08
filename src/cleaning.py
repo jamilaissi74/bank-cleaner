@@ -4,9 +4,11 @@ from matplotlib import text
 import pandas as pd
 from pandas._libs.tslibs.parsing import DateParseError
 
-rate=10     # RATE of conversion from EUR to MAD, this is a placeholder and should be replaced with the actual rate when needed.
+EUR_TO_MAD=10     # RATE of conversion from EUR to MAD, this is a placeholder and should be replaced with the actual rate when needed.
 
 def label_normalizing(label):
+    if pd.isnull(label) or str(label).strip() == "":
+            raise ValueError("label is empty")
     label=str(label)
     a=label.strip()
     a=a.lower()
@@ -47,6 +49,6 @@ def amount_cleaning(amount, currency):
     amount= pd.to_numeric(amount,  errors='raise')
     currency=currency_normalizing(currency)
     if currency == "EUR":
-        amount = amount * rate
+        amount = amount * EUR_TO_MAD
     amount=float(amount)
     return round(amount, 2)

@@ -56,3 +56,5 @@ i choose pandas because it's easy and straight to the point
 
 
 ## put this in read me file : Dates passed should be either iso or d/m/y
+
+## LIL MODIFICATIONS ON LABEL TO DO LATER 
