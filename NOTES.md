@@ -50,3 +50,9 @@ df.shap gives me how many rows and columns
 df.columns gives me the columns name and their type 
 
 i choose pandas because it's easy and straight to the point 
+
+
+# I'm in M3 and the prob is how do i know if it's a day or month !!!!
+
+
+## put this in read me file : Dates passed should be either iso or d/m/y
