@@ -4,6 +4,7 @@ from matplotlib import text
 import pandas as pd
 from pandas._libs.tslibs.parsing import DateParseError
 
+rate=10     # RATE of conversion from EUR to MAD, this is a placeholder and should be replaced with the actual rate when needed.
 
 def label_normalizing(label):
     label=str(label)
@@ -11,8 +12,6 @@ def label_normalizing(label):
     a=a.lower()
     a=str(re.sub(" +", "_", a))
     return a
-
-# def amount_cleaning(amount):
 
 def date_normalizing(date):
     if pd.isnull(date) or str(date).strip() == "":
@@ -38,3 +37,16 @@ def currency_normalizing(currency):
          return "MAD"
     else:
         raise ValueError("currency is not known or not supported")
+
+def amount_cleaning(amount, currency):
+    if pd.isnull(amount) or str(amount).strip() == "":
+            raise ValueError("amount is empty")
+    amount=str(amount).strip()
+    amount= str(re.sub(" +", "", amount))
+    amount= str(re.sub(",", ".", amount))
+    amount= pd.to_numeric(amount,  errors='raise')
+    currency=currency_normalizing(currency)
+    if currency == "EUR":
+        amount = amount * rate
+    amount=float(amount)
+    return round(amount, 2)

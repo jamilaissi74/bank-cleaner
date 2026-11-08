@@ -1,3 +1,5 @@
+import re
+
 from src import cleaning
 import pandas as pd
 from datetime import date
@@ -65,5 +67,6 @@ text= "CARREFOUR MARKET"
 #         status = "OK" if expected is None else "WRONG"
 #         print(status, repr(value), "-> REJECTED:", e)
 
-print(cleaning.currency_normalizing("EUR"))
-print(cleaning.currency_normalizing("MAD"))
+# print(cleaning.currency_normalizing("EUR"))
+# print(cleaning.currency_normalizing("MAD"))
+print(cleaning.amount_cleaning("100"))  # Should return 1234.56
