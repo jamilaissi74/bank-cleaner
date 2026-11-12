@@ -3,7 +3,7 @@ import re
 import pandas as pd
 from unidecode import unidecode
 
-EUR_TO_MAD=10     # RATE of conversion from EUR to MAD, this is a placeholder and should be replaced with the actual rate when needed.
+EUR_TO_MAD=10.93     # RATE of conversion from EUR to MAD
 
 def label_normalizing(label):
     if pd.isnull(label) or str(label).strip() == "":

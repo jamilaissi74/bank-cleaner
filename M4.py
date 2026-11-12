@@ -34,6 +34,7 @@ for key, value in file_settings.items():
                 'date': row[1],
                 'label': row[2],
                 'amount': row[3],
+                'currency': row[4]
             }
             print("REJECTED ROW \n", row, "\nREASON: ", e)
             rejected_rows.append(error_decitionary)
@@ -41,13 +42,9 @@ for key, value in file_settings.items():
   
         
 
-        try:
-            os.makedirs('./outputs', exist_ok=False)
-            print("directory created")
-        except FileExistsError:
-            print("directory already exists")
-    df_rejects= pd.DataFrame(rejected_rows)
-    df_rejects.to_csv('./outputs/rejects.csv', index=False)
+os.makedirs('./outputs', exist_ok=True)
+df_rejects= pd.DataFrame(rejected_rows)
+df_rejects.to_csv('./outputs/rejects.csv', index=False)
 
 
 
