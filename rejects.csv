@@ -1,0 +1,3 @@
+,file_name,row_index,reason,raw_data
+0,banque_a.csv,50,"day is out of range for month: 2026-02-30, at position 0","Pandas(Index=50, date='2026-02-30', libelle='CAFE HAFA', montant=-35.0, devise='MAD')"
+1,banque_a.csv,51,amount is empty,"Pandas(Index=51, date='2026-03-11', libelle='NETFLIX', montant=nan, devise='MAD')"

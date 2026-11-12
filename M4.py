@@ -29,3 +29,6 @@ for row in df.itertuples():
 print("list length", len(list_normalized))
 print("rejected rows length", len(rejected_rows))
 print("rejected rows", rejected_rows)
+
+df_rejects= pd.DataFrame(rejected_rows)
+df_rejects.to_csv('./rejects.csv')
