@@ -1,3 +1,6 @@
 ,file_name,row_index,reason,raw_data
 0,banque_a.csv,50,"day is out of range for month: 2026-02-30, at position 0","Pandas(Index=50, date='2026-02-30', libelle='CAFE HAFA', montant=-35.0, devise='MAD')"
 1,banque_a.csv,51,amount is empty,"Pandas(Index=51, date='2026-03-11', libelle='NETFLIX', montant=nan, devise='MAD')"
+2,banque_b.csv,49,date is empty,"Pandas(Index=49, _1=nan, Description=nan, _3=nan, Monnaie=nan)"
+3,banque_c.csv,21,"Unknown datetime string format, unable to parse: date, at position 0","Pandas(Index=21, date='date', libelle='libelle', montant='montant', devise='devise')"
+4,banque_c.csv,45,"Unable to parse string ""-ab"" at position 0","Pandas(Index=45, date='2026-05-15', libelle=""RESTAURANT L'ÉTOILE"", montant='-ab', devise='MAD')"
