@@ -1,8 +1,7 @@
-from datetime import datetime,date
+from datetime import date
 import re  
-from matplotlib import text
 import pandas as pd
-from pandas._libs.tslibs.parsing import DateParseError
+from unidecode import unidecode
 
 EUR_TO_MAD=10     # RATE of conversion from EUR to MAD, this is a placeholder and should be replaced with the actual rate when needed.
 
@@ -13,6 +12,7 @@ def label_normalizing(label):
     a=label.strip()
     a=a.lower()
     a=str(re.sub(" +", "_", a))
+    a=unidecode(a)
     return a
 
 def date_normalizing(date):

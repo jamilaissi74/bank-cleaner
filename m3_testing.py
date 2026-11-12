@@ -69,4 +69,53 @@ text= "CARREFOUR MARKET"
 
 # print(cleaning.currency_normalizing("EUR"))
 # print(cleaning.currency_normalizing("MAD"))
-print(cleaning.amount_cleaning("100"))  # Should return 1234.56
+# print(cleaning.amount_cleaning("100"))  # Should return 1234.56
+
+
+
+
+def check(function, args, expected):
+    """expected = a value, or 'REJECT' if the function must raise ValueError."""
+    try:
+        result = function(*args)
+        ok = (expected != "REJECT") and (result == expected)
+        print("OK   " if ok else "WRONG", args, "->", result, "| expected:", expected)
+    except ValueError as e:
+        ok = expected == "REJECT"
+        print("OK   " if ok else "WRONG", args, "-> REJECTED:", e)
+
+
+print("--- LABEL ---")
+check(cleaning.label_normalizing, ("NETFLIX",), "netflix")
+check(cleaning.label_normalizing, ("Netflix",), "netflix")          # same as above
+check(cleaning.label_normalizing, ("  CTM VOYAGE  ",), "ctm_voyage")
+check(cleaning.label_normalizing, ("CTM   VOYAGE",), "ctm_voyage")
+check(cleaning.label_normalizing, ("",), "REJECT")
+check(cleaning.label_normalizing, ("   ",), "REJECT")
+check(cleaning.label_normalizing, (None,), "REJECT")
+check(cleaning.label_normalizing, (float("nan"),), "REJECT")
+# accent: no expected value, it depends on YOUR decision. Just look at it.
+print("accent test:", cleaning.label_normalizing("Café Hafa"), "|", cleaning.label_normalizing("CAFE HAFA"))
+
+print("--- AMOUNT ---")
+check(cleaning.amount_cleaning, ("-119,91", "MAD"), -119.91)
+check(cleaning.amount_cleaning, ("-622.32", "MAD"), -622.32)
+check(cleaning.amount_cleaning, (-94.12, "mad "), -94.12)           # already a number
+check(cleaning.amount_cleaning, ("1 234,50", "MAD"), 1234.5)
+check(cleaning.amount_cleaning, ("100", "MAD"), 100.0)
+check(cleaning.amount_cleaning, ("-100,00", "EUR"), round(-100 * cleaning.EUR_TO_MAD, 2))
+check(cleaning.amount_cleaning, ("-100,00", "eur "), round(-100 * cleaning.EUR_TO_MAD, 2))
+check(cleaning.amount_cleaning, ("ab", "MAD"), "REJECT")
+check(cleaning.amount_cleaning, ("", "MAD"), "REJECT")
+check(cleaning.amount_cleaning, (None, "MAD"), "REJECT")
+check(cleaning.amount_cleaning, (float("nan"), "MAD"), "REJECT")
+check(cleaning.amount_cleaning, ("-100,00", "USD"), "REJECT")
+check(cleaning.amount_cleaning, ("-100,00", ""), "REJECT")
+
+print("--- FILE C, row by row ---")
+df = pd.read_csv("./releves/banque_c.csv")
+for i, row in df.iterrows():
+    try:
+        cleaning.amount_cleaning(row["montant"], row["devise"])
+    except ValueError as e:
+        print("rejected row", i, "|", row["montant"], row["devise"], "|", e)
