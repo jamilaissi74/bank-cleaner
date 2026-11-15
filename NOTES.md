@@ -60,3 +60,11 @@ i choose pandas because it's easy and straight to the point
 ## LIL MODIFICATIONS ON LABEL TO DO LATER 
 
 ## dependencies i installed unidecode 
+
+
+## les doublons sont the ones where  date,amount, and name is the same 
+
+## the first occurences in duplicates.csv are kept 
+## the file_name is not part of the decision of duplicates because there can be duplicates across multiple banks
+
+## “M5: simplify the duplicates block with masks, and add a kept/removed status”.
