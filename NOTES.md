@@ -68,3 +68,23 @@ i choose pandas because it's easy and straight to the point
 ## the file_name is not part of the decision of duplicates because there can be duplicates across multiple banks
 
 ## “M5: simplify the duplicates block with masks, and add a kept/removed status”.
+
+----------M6----------------
+# categories: 
+outcome:
+transportation: oncf ,ctm
+online subscriptions:netflix,spotify,youtube
+bills: iam_facture_internet, amendis_eau_elec,amendis,loyer_appartement
+groceries: boulangerie ,carrefour, market,marjane, bim,lazyon,supeco
+necessities (health, education):pharmacie,librairie
+purchases(clothings):decathlon,jumia, temu, 
+leisure(going out,fast food,...):cafe, restaurant,glovo,recharge
+others: ...
+carburant:afriquia_carburant, carburant
+income :
+work : client
+others:....
+
+
+i use keywords, and exact matching 
+others has anything that doesnt match the categories

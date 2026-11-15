@@ -14,7 +14,7 @@ rejected_rows=[]
 
 for key, value in file_settings.items():
     df=pd.read_csv('./releves/'+key, **value)
-    print('file name : '+key+': ')
+    # print('file name : '+key+': ')
 
     for row in df.itertuples():
         try:
@@ -52,7 +52,7 @@ df_rejects.to_csv('./outputs/rejects.csv', index=False)
 #---------------------M5---------------------------
 
 df_cleaned=pd.DataFrame(list_normalized)
-print("Number of rows after cleaning: ", len(df_cleaned))
+# print("Number of rows after cleaning: ", len(df_cleaned))
 
 duplicated_rows=[]
 
@@ -67,17 +67,16 @@ for index, is_duplicated in duplicated_df.items():
             'date': duplicated_row['date'],
             'label': duplicated_row['label'],
             'amount': duplicated_row['amount'],
-            'kept': "no",
         }
-        print("DUPLICATED ROW \n", duplicated_row, "\nREASON: ", "duplicate row")
+        # print("DUPLICATED ROW \n", duplicated_row, "\nREASON: ", "duplicate row")
         duplicated_rows.append(error_decitionary) 
 
 df_no_duplicates=df_cleaned.drop_duplicates(subset=['date', 'label', 'amount'], keep='first')
 
  
-print("total",len(df_cleaned))
-print("Number of unique rows after cleaning: ", len(df_no_duplicates))
-print("Number of duplicated rows: ", len(duplicated_rows))
+# print("total",len(df_cleaned))
+# print("Number of unique rows after cleaning: ", len(df_no_duplicates))
+# print("Number of duplicated rows: ", len(duplicated_rows))
 
 os.makedirs('./outputs', exist_ok=True)
 df_duplicated= pd.DataFrame(duplicated_rows)
@@ -85,3 +84,4 @@ df_duplicated.to_csv('./outputs/duplicates.csv', index=False)
 
 #----------------M6-----------------------------
 
+print(df_no_duplicates['label'].unique())

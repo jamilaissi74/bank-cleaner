@@ -1,5 +1,5 @@
-file_name,row_index,reason,date,label,amount,currency
-banque_a.csv,10,duplicate row,2026-01-18,afriquia_carburant,-164.78,
-banque_a.csv,11,duplicate row,2026-01-18,afriquia_carburant,-164.78,
-banque_a.csv,31,duplicate row,2026-03-02,carrefour_market,-129.75,
-banque_a.csv,32,duplicate row,2026-03-02,carrefour_market,-129.75,
+file_name,row_index,reason,date,label,amount
+banque_a.csv,10,duplicate row,2026-01-18,afriquia_carburant,-164.78
+banque_a.csv,11,duplicate row,2026-01-18,afriquia_carburant,-164.78
+banque_a.csv,31,duplicate row,2026-03-02,carrefour_market,-129.75
+banque_a.csv,32,duplicate row,2026-03-02,carrefour_market,-129.75
