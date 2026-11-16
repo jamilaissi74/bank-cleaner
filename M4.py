@@ -1,5 +1,5 @@
 import pandas as pd
-from src import cleaning 
+from src import cleaning, category
 import os
 from collections import OrderedDict as ordered
 
@@ -85,3 +85,12 @@ df_duplicated.to_csv('./outputs/duplicates.csv', index=False)
 #----------------M6-----------------------------
 
 print(df_no_duplicates['label'].unique())
+categories=[]
+for row_m6 in df_no_duplicates.itertuples():
+    categories.append(category.categorize(row_m6.label))
+
+df_no_duplicates ['category']=categories
+print(df_no_duplicates.head())
+print(len(df_no_duplicates['category'].unique()))
+print(df_no_duplicates['category'].value_counts())
+print(category.categorize("shop_anfa"))
