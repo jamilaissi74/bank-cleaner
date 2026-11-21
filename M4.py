@@ -91,6 +91,27 @@ for row_m6 in df_no_duplicates.itertuples():
 
 df_no_duplicates ['category']=categories
 print(df_no_duplicates.head())
-print(len(df_no_duplicates['category'].unique()))
-print(df_no_duplicates['category'].value_counts())
-print(category.categorize("shop_anfa"))
+
+
+#------------------M7---------------------
+final_date=pd.to_datetime(df_no_duplicates['date']).dt.to_period('M')
+report_df=pd.DataFrame(final_date)
+print(report_df)
+
+amount_type=[]
+for final_amount in df_no_duplicates['amount'] :
+    if final_amount < 0 :
+        amount_type.append("expense")
+    else:
+        amount_type.append("income")
+
+report_df['type']=amount_type
+report_df['amount']=df_no_duplicates['amount']
+report_df['category']=df_no_duplicates['category']
+
+print(report_df)
+#print(report_df.groupby(['date','type','category']).sum())
+#detail = report_df.groupby(['date', 'type', 'category']).sum().reset_index()
+detail=report_df.groupby(['date', 'type', 'category']).sum().reset_index()
+print(detail)
+detail.to_csv('./outputs/reports.csv', index=False, float_format="%.2f")

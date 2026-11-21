@@ -88,3 +88,12 @@ others:....
 
 i use keywords, and exact matching 
 others has anything that doesnt match the categories
+
+
+##
+-every negative number is an expense
+-report income seperately too , maybe add income - expense = to see if i got something left 
+-maybe put expenses in a positive number but make it red if possible + explicitly state that they are expenses
+-it's a calendar month for sure , months with 0 spending are shown  too
+-i think it's month : category : total 
+ -it's always 2decimals 
