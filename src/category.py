@@ -20,3 +20,11 @@ def categorize(label):
                 return key
 
     return DEFAULT_CATEGORY
+
+def add_category(df_no_duplicates):
+    categories=[]
+    for row_m6 in df_no_duplicates.itertuples():
+        categories.append(categorize(row_m6.label))
+    
+    df_no_duplicates ['category']=categories
+    return df_no_duplicates
