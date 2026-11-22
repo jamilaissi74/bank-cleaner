@@ -90,10 +90,21 @@ i use keywords, and exact matching
 others has anything that doesnt match the categories
 
 
-##
+## M7
 -every negative number is an expense
 -report income seperately too , maybe add income - expense = to see if i got something left 
--maybe put expenses in a positive number but make it red if possible + explicitly state that they are expenses
--it's a calendar month for sure , months with 0 spending are shown  too
+-the expenses are negative 
+-it's a calendar month for sure , 
 -i think it's month : category : total 
- -it's always 2decimals 
+- in the table it shows all incomes first and their total and then it shows all expenses grouped by their
+
+## M8
+-I want it to be able to read any csv file, guess setting and then check shape of file , if it's not 4 columns , and if the amount columns is not number then raise error or maybe change the settings ? or just simply write in readme file that the default should be ; delimiter and decimal , 
+-if file provided is not csv or doesnt exist , or doesnt have default delimiter , ouput a message in terminal
+
+## Installation
+We use unicode library:
+```
+    pip install Unidecode
+```
+## the first occurence is kept :duplicates.csv 
